@@ -35,5 +35,8 @@ Step 3. Intialise a local git
         git commit -m "add msg"
 
 Step 4. Go to your github.com create a new respo any you can provide for that repo
+        git branch -M main       ## To create branch, default will be master (To check branch git branch)
+        git remote add origin https://github.com/kailas-muke/LinearRegAppGCP.git
+
 Step 5. Push our code to our github repo
-        git push github_reo_url branch_name
+        git push -u origin main
