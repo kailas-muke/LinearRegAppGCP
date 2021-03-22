@@ -40,3 +40,20 @@ Step 4. Go to your github.com create a new respo any you can provide for that re
 
 Step 5. Push our code to our github repo
         git push -u origin main
+
+Step 6. Go to GCP cloud
+Step 7. Click on "activate cloud shell" which at right top corner
+Step 8. Once the cloud shell is activated. Goto your cloud shell and clne your github app which we have pushed at step 5
+        git clone repo_url
+Step 9. On the cloud shell itself get navigate into the project folder
+Step 10. set project property
+        gcloud config set project {Project id of project created in step 1}
+Step 11. deploy
+        gcloud app deploy
+Step 12. Choose region
+
+You can stream logs from the command line by running:
+  $ gcloud app logs tail -s default
+
+To view your application in the web browser run:
+  $ gcloud app browse
