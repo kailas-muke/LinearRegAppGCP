@@ -3,10 +3,20 @@ Step 1: Create a new anaconda env
 
 Step 2: Install the requirements file
         pip install -r requirements.txt
-
+        (Try to run it on local machine)
 Step 3: Create a file named Procfile
         There is no extension for this Procfile
         P should be capital
 
 Step 4: Initialize your project as git project
         git init
+        git status
+        git add .
+        git commit -m "any comment"
+
+Step 5: login to heroku
+        heroku create  (in git bash itself
+                        if not login heroku with cmd)
+        git remote -v
+
+        git push heroku master
