@@ -1,44 +1,47 @@
+GCP cloud deployment
 
-On GCP
-    1. Create new project
+Step 1. Go to GCP cloud create a new project
+Step 2. Create a new configuration file named as app.yaml and put the below content inside this newlt created file
+    runtime: python
+    env: flex
+    entrypoint: gunicorn -b :$PORT main:application
 
-Point 1. create app.yaml file in local with
-runtime: python
-env: flex                                                 ## flexible env
-entrypoint: gunicorn -b :$PORT main:application           ## -b=binding with port no.
+    runtime_config:
+      python_version: 3
 
-runtime_config:
-  python_version: 3
+    manual_scaling:
+      instances: 1
+    resources:
+      cpu: 1
+      memory_gb: 0.5
+      disk_size_gb: 10
 
-manual_scaling:
-  instances: 1                                             ##
-resources:
-  cpu: 1
-  memory_gb: 0.5
-  disk_size_gb: 10
+Step 3. Intialise a local git
+        git init
+        git add .
+        git commit -m "add msg"
 
-Point 1. Your main python file name should be application.py
-Point 2. Your flask object name, which we have defined in application.py should also be the application.
-Point 3. .ebignore  is responsible to hold the name of those files which we don't want to push on a cloud.
-Point 4. Create a requirements.txt file.
-        Command : pip freeze > requirements.txt
-Point 5. Create a folder called .ebextensions
-Point 6. Inside .ebextensions we need a python.config file.
-Point 7. Mention the commands in python.config
-            option_settings:
-              "aws:elasticbeanstalk:container:python":
-                WSGIPath: application:application
+Step 4. Go to your github.com create a new respo any you can provide for that repo
+        git branch -M main       ## To create branch, default will be master (To check branch git branch)
+        git remote add origin https://github.com/kailas-muke/LinearRegAppGCP.git
 
-Create .zip file with
-    1. .ebextensions
-    2. .git
-    3. static
-    4. templates
-    5. .ebignore
-    6. application.py
-    7. finalized_model.pickle
-    8. requirements.txt
+Step 5. Push our code to our github repo
+        git push -u origin main
 
-In Elastic Beamstick
-Step 1:
-    Create applicaion-->select platform as python-->upload file(.zip file which is created above )--> click on create application--> Check status & logs
+Step 6. Go to GCP cloud
+Step 7. Click on "activate cloud shell" which at right top corner
+Step 8. Once the cloud shell is activated. Goto your cloud shell and clne your github app which we have pushed at step 5
+        git clone repo_url
+Step 9. On the cloud shell itself get navigate into the project folder
+        cd project folder_name/
+Step 10. After that we are suppose to connect our cloned app tp project which is created in step 1
+        gcloud config set project {Project id of project created in step 1}
+Step 11. Execute the below command in gcloud shell
+        gcloud app deploy
+Step 12. Choose region
+
+You can stream logs from the command line by running:
+  $ gcloud app logs tail -s default
+
+To view your application in the web browser run:
+  $ gcloud app browse

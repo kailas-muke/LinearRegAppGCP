@@ -46,9 +46,10 @@ Step 7. Click on "activate cloud shell" which at right top corner
 Step 8. Once the cloud shell is activated. Goto your cloud shell and clne your github app which we have pushed at step 5
         git clone repo_url
 Step 9. On the cloud shell itself get navigate into the project folder
-Step 10. set project property
+        cd project folder_name/
+Step 10. After that we are suppose to connect our cloned app tp project which is created in step 1
         gcloud config set project {Project id of project created in step 1}
-Step 11. deploy
+Step 11. Execute the below command in gcloud shell
         gcloud app deploy
 Step 12. Choose region
 
